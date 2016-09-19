@@ -13,8 +13,6 @@ export class ChronoService {
 
   private beginCycle(): void
   {
-    console.log("begincycle");
-
     let eyeDelay = this.minutesToMs(this.paramsService.getGong('eye').delay);
     let pauseDelay = this.minutesToMs(this.paramsService.getGong('pause').delay);
     let restartDelay = this.minutesToMs(this.paramsService.getGong('restart').delay);
@@ -48,7 +46,7 @@ export class ChronoService {
 
   minutesToMs(time : number) : number
   {
-    return time*1000;
+    return time*60*1000;
   }
 
   setIntervalX(callback, delay, repetitions) {

@@ -29,11 +29,4 @@ export class SoundSelectorComponent implements OnInit {
     this.gong.soundId = parseInt(event.toString());
     this.soundService.playSound(this.gong.id);
   }
-
-  onSelectChange()
-  {
-    console.log("onChange");
-  }
-
-
 }
