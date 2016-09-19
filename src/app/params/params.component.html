@@ -1,0 +1,12 @@
+<section id="gongsContainer">
+  <app-gong *ngFor="let gong of params.gongs" [gong]="gong"></app-gong>
+</section>
+<section id="moreOptions" class="row">
+  <div class="range-field col s6">
+  <label>Volume global</label>
+    <input type="range" [(ngModel)]="params.globalVolume" min="0" max="100" />
+  </div>
+  <div class="col s6 save-container">
+    <button class="btn waves-effect waves-light" (click)="paramsService.save()">Enregistrer les paramètres</button>
+  </div>
+</section>

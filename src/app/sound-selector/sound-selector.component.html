@@ -1,0 +1,14 @@
+<div class="input-field col s12 select-container">
+
+     <!--  <select materialize="material_select"
+         [ngModel]="selectedSoundId" (ngModelChange)="updateSelectedSoundId($event)">
+        <option *ngFor="let sound of sounds" [value]="sound.id">{{sound.name}}</option>
+      </select> -->
+
+      <select materialize="material_select"
+         [ngModel]="gong.soundId" (ngModelChange)="onSelectSound($event)">
+        <option *ngFor="let sound of sounds" [value]="sound.id">{{sound.name}}</option>
+      </select>
+</div>
+
+

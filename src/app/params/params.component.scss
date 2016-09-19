@@ -1,0 +1,37 @@
+app-gong
+{
+  width: 33%;
+  display: inline-block;
+}
+
+#gongsContainer
+{
+  background-color: white;
+}
+
+input[type=range]
+{
+  border: none;
+}
+
+.range-field {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    margin: .5rem auto;
+    padding-left: 2rem;
+}
+
+.save-container
+{
+  line-height: 5rem;
+
+  .btn { background-color: rgb(38, 166, 154); }
+}
+
+#moreOptions
+{
+  padding: 0;
+  margin-bottom: 0;
+  background-color: #efefef;
+}

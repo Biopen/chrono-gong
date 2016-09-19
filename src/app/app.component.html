@@ -1,3 +1,17 @@
-<h1>
-  {{title}}
-</h1>
+
+<h1>Chrono Gong v2</h1>
+
+<app-params></app-params>
+
+<section id="chronoContainer">
+	<div [ngSwitch]="isRunning">
+		<div *ngSwitchCase="true">Tu travailles depuis <span *ngIf="hoursElapsed">{{ hoursElapsed }} heures et </span>{{ minuteElapsed }} minutes</div>
+		<div *ngSwitchCase="false">Cliquez pour lancer ChronoGong</div>
+	</div>
+
+	<button class="btn waves-effect waves-light btn-start" 
+      (click)="toggleChrono()"  
+      [style.background-color]="isRunning ? '#F44336' : '#2bbbad'">
+    <span [innerHTML]="isRunning? 'stop': 'start'"></span>
+  </button>
+</section>

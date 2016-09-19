@@ -1,0 +1,65 @@
+h2 
+{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.legend
+{
+  font-size: .9rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: -2.5rem;
+  color: #848282;
+}
+
+.file-field .file-path-wrapper
+{
+  padding: 0;
+}
+
+.range-field
+{
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    margin-top: -.5rem;
+
+    input { margin: 0; }
+
+    .thumb:last-child
+    {
+      display: none;
+    }
+}
+
+.delayInput
+{
+  font-size: 3.5rem;
+  width: 6rem;
+  height: auto;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+  padding-top: .6rem;
+  padding-right: .5rem;
+  padding-left: 1.5rem;
+  border: 2px solid #908f8f !important;
+  border-radius: 10px;
+  background-color: #efefef;
+}
+
+.btn
+{
+  float: none;
+  font-size: .9rem;
+  line-height: 2rem;
+  height: 2rem;
+}
+
+.file-path
+{
+  width: 80%  !important;
+  height: 1.5rem;
+  text-align: center;
+}

@@ -1,0 +1,13 @@
+@import "../node_modules/materialize-css/dist/css/materialize.css";
+
+body
+{
+  margin: 0 auto !important;
+  background-color: #efefef;
+  width: 700px;
+  text-align: center;
+
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(12, 12, 12, 0.28);
+-moz-box-shadow: 0px 0px 5px 5px rgba(12, 12, 12, 0.28);
+box-shadow: 0px 0px 5px 5px rgba(12, 12, 12, 0.28);
+}
