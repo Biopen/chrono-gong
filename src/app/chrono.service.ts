@@ -21,14 +21,14 @@ export class ChronoService {
     let pauseDelay = this.minutesToMs(this.paramsService.getGong('pause').delay);
     let restartDelay = this.minutesToMs(this.paramsService.getGong('restart').delay);
 
-    if (eyeDelay > 0)
-    {
-      let eyeTimersLeft = Math.ceil(pauseDelay / eyeDelay) - 1;
-      if (eyeTimersLeft > 0) this.timers.push( this.setIntervalX(() => this.soundService.playSound('eye'), eyeDelay, eyeTimersLeft) );
-    }    
-    
     if (pauseDelay > 0) 
     {
+      if (eyeDelay > 0)
+      {
+        let eyeTimersLeft = Math.ceil(pauseDelay / eyeDelay) - 1;
+        if (eyeTimersLeft > 0) this.timers.push( this.setIntervalX(() => this.soundService.playSound('eye'), eyeDelay, eyeTimersLeft) );
+      }  
+
       this.timers.push( setTimeout(() => this.soundService.playSound('pause'), pauseDelay) );
       
       // si pas de pause, alors on ne prend pas non plus le restart en compte
@@ -43,6 +43,8 @@ export class ChronoService {
          this.timers.push( setTimeout( () => this.stateObservable.next(false), pauseDelay) );
       }
     }
+    // si pas de pause, alors on met les yeux en continue
+    else if (eyeDelay > 0) this.timers.push( setInterval( () => this.soundService.playSound('eye') , eyeDelay) );
   }
 
   start() : void

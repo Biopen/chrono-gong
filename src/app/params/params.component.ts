@@ -25,4 +25,9 @@ export class ParamsComponent implements OnInit, DoCheck {
     //console.log("doCheck service.params = " + JSON.stringify(this.paramsService.getParams()));
 
   }
+
+  checkDelaysInteraction()
+  {
+      this.paramsService.getGong('restart').disabled = this.paramsService.getGong('pause').delay <= 0;
+  }
 }

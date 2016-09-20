@@ -1,4 +1,4 @@
-<div *ngIf="gong" [style.color]="gong.delay <= 0 ? '#bdbdbd' : 'inherit' ">
+<div *ngIf="gong" [style.color]="gong.delay <= 0 || gong.disabled ? '#bdbdbd' : 'inherit' ">
   
   <div [ngSwitch]="gong.id">
     <h2 *ngSwitchCase="'eye'">Détente des yeux toutes les</h2>
@@ -6,9 +6,9 @@
     <h2 *ngSwitchCase="'restart'">Durée de la pause</h2>
   </div>
 
-  <input class="delayInput" [(ngModel)]="gong.delay" type="number" placeholder="name" 
-    [style.background-color]="gong.delay <= 0 ? '#f1eded' : 'rgba(63, 81, 181, 0.86)' "
-    [style.color]="gong.delay <= 0 ? '#c2c2c2' : '#f1eded' "/>
+  <input class="delayInput" [ngModel]="gong.delay" (ngModelChange)="onDelayChange($event)" type="number" placeholder="name" 
+    [style.background-color]="gong.delay <= 0 || gong.disabled ? '#f1eded' : 'rgba(63, 81, 181, 0.86)' "
+    [style.color]="gong.delay <= 0 || gong.disabled ? '#c2c2c2' : '#f1eded' "/>
   
   <div class="legend">
       Minutes

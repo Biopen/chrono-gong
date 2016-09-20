@@ -5,7 +5,7 @@ import { Sound } from './sound';
 
 const defaultSounds : Sound[] = 
 [
-  {id: 1, name:"Gong", url:"assets/gong.mp3"},
+  {id: 1, name:"Gong", url:"assets/chigong.mp3"},
   {id: 2, name:"Gong réel", url:"assets/gong-real.mp3"},
   {id: 3, name:"Ring Up", url:"assets/ring-up.mp3"},
   {id: 4, name:"Ring Up 2", url:"assets/ring2-up.mp3"},

@@ -1,5 +1,5 @@
 <section id="gongsContainer">
-  <app-gong *ngFor="let gong of params.gongs" [gong]="gong"></app-gong>
+  <app-gong *ngFor="let gong of params.gongs" [gong]="gong" (delayUpdated)="checkDelaysInteraction()"></app-gong>
 </section>
 <section id="moreOptions" class="row">
   <div class="range-field col s6">
