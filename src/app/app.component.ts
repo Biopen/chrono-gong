@@ -7,7 +7,7 @@ import { ChronoService } from './chrono.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, DoCheck {
+export class AppComponent implements OnInit {
 
   isRunning : boolean = false;
 
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, DoCheck {
 
   ngOnInit()
   {
-    
+    this.chronoService.stateObservable.subscribe(state => { if (!state) this.toggleChrono() } );
   }
 
   updateChronoTime() : void

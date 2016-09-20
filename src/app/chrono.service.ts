@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable }       from 'rxjs/Observable';
+import { Subject }          from 'rxjs/Subject';
 
 import { ParamsService } from './params.service';
 import { SoundService } from './sound.service';
@@ -7,6 +9,8 @@ import { SoundService } from './sound.service';
 export class ChronoService {
 
   private timers = [];  
+
+  stateObservable = new Subject<boolean>();
 
   constructor(private paramsService : ParamsService,
               private soundService : SoundService) { }
@@ -23,10 +27,22 @@ export class ChronoService {
       if (eyeTimersLeft > 0) this.timers.push( this.setIntervalX(() => this.soundService.playSound('eye'), eyeDelay, eyeTimersLeft) );
     }    
     
-    if (pauseDelay > 0) this.timers.push( setTimeout(() => this.soundService.playSound('pause'), pauseDelay) );
-    if (restartDelay > 0) this.timers.push( setTimeout(() => this.soundService.playSound('restart'), pauseDelay + restartDelay) );
-
-    this.timers.push( setTimeout(() => this.beginCycle(), pauseDelay+restartDelay) );
+    if (pauseDelay > 0) 
+    {
+      this.timers.push( setTimeout(() => this.soundService.playSound('pause'), pauseDelay) );
+      
+      // si pas de pause, alors on ne prend pas non plus le restart en compte
+      if (restartDelay > 0) 
+      {
+          this.timers.push( setTimeout(() => this.soundService.playSound('restart'), pauseDelay + restartDelay) );
+          this.timers.push( setTimeout( () => this.beginCycle(), pauseDelay+restartDelay) );
+      }
+      else
+      {
+         // si pas de restart, alorson arrêt le chrono à la pause
+         this.timers.push( setTimeout( () => this.stateObservable.next(false), pauseDelay) );
+      }
+    }
   }
 
   start() : void

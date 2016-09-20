@@ -7,9 +7,9 @@ import { Params } from './params';
 
 const defaultGongs : Gong[] = 
 [
-  {id: 'eye', title: 'Détente des yeux toutes les', 'delay':15, soundId:1, volume:30},
-  {id: 'pause', title: 'Une vraie pause toutes les', 'delay':50, soundId:3, volume:80},
-  {id: 'restart', title: 'Durée de la pause', 'delay':10, soundId:6, volume:80},
+  {id: 'eye',  'delay':15, soundId:1, volume:30},
+  {id: 'pause', 'delay':50, soundId:3, volume:80},
+  {id: 'restart', 'delay':10, soundId:6, volume:80},
 ];
 
 @Injectable()
@@ -19,13 +19,13 @@ export class ParamsService {
 
   constructor(private cookieService:CookieService) 
   {
-    this.params = this.cookieService.getObject('params') as Params;
+    this.params = this.cookieService.getObject('param') as Params;
     if (!this.params) this.params = new Params(defaultGongs, 70);
   }
 
   save()
   {
-    this.cookieService.putObject('params', this.params);
+    this.cookieService.putObject('param', this.params);
   }
 
   getParams() : Params

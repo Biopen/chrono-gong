@@ -1,12 +1,24 @@
-<div *ngIf="gong">
-  <h2>{{ gong.title }}</h2>  
-    <input class="delayInput" [(ngModel)]="gong.delay" type="number" placeholder="name" />
-    <div class="legend">Minutes</div>
-    <app-sound-selector [gong]="gong"></app-sound-selector>
-    
-    <div class="range-field">
-      <label>Volume</label>
-      <input type="range" [(ngModel)]="gong.volume" min="0" max="100" />
-    </div>
-    <!-- <input  type="file" placeholder="name" /> --><!-- [(ngModel)]="gong.soundUrl" -->
+<div *ngIf="gong" [style.color]="gong.delay <= 0 ? '#bdbdbd' : 'inherit' ">
+  
+  <div [ngSwitch]="gong.id">
+    <h2 *ngSwitchCase="'eye'">Détente des yeux toutes les</h2>
+    <h2 *ngSwitchCase="'pause'">Une vraie pause au bout de</h2>
+    <h2 *ngSwitchCase="'restart'">Durée de la pause</h2>
+  </div>
+
+  <input class="delayInput" [(ngModel)]="gong.delay" type="number" placeholder="name" 
+    [style.background-color]="gong.delay <= 0 ? '#f1eded' : 'rgba(63, 81, 181, 0.86)' "
+    [style.color]="gong.delay <= 0 ? '#c2c2c2' : '#f1eded' "/>
+  
+  <div class="legend">
+      Minutes
+  </div>
+
+  <app-sound-selector [gong]="gong"></app-sound-selector>
+  
+  <div class="range-field">
+    <label>Volume</label>
+    <input type="range" [(ngModel)]="gong.volume" min="0" max="100" />
+  </div>
+  <!-- <input  type="file" placeholder="name" /> --><!-- [(ngModel)]="gong.soundUrl" -->
 </div>
